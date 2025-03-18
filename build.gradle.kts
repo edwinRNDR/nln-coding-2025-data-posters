@@ -15,7 +15,7 @@ val orxFeatures = setOf<String>(
     "orx-camera",
 //  "orx-chataigne",
     "orx-color",
-//  "orx-composition",
+  "orx-composition",
     "orx-compositor",
 //  "orx-compute-graph",
 //  "orx-compute-graph-nodes",
@@ -132,6 +132,10 @@ dependencies {
 //    implementation(libs.orsl.extension.pbr)
 //    implementation(libs.orsl.extension.raymarching)
 //    implementation(libs.orsl.extension.sdf)
+
+    implementation("com.aallam.openai:openai-client:4.0.1")
+    runtimeOnly("io.ktor:ktor-client-okhttp:3.1.0")
+
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)

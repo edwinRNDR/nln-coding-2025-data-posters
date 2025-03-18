@@ -11,7 +11,6 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.*
 import javax.net.ssl.HttpsURLConnection
-import kotlin.io.path.isReadable
 
 val baseAddress = "https://newsapi.org/v2"
 
@@ -27,7 +26,7 @@ data class Result(
 @Serializable
 data class Article(
     val author: String?,
-    val content: String,
+    val content: String?,
     val description: String?,
     val publishedAt: String,
     val source: Source,
