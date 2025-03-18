@@ -134,6 +134,26 @@ class OpenRouterAgent(
             logger.warn { "invalid coordinates: '$scoords'" }
             return Vector2.INFINITY
         }
+    }
+    fun chatVector2s(prompt: String): List<Vector2> {
+        history.add(
+            ChatMessage(
+                role = ChatRole.User,
+                content = "$prompt. Output a list of coordinates separated by a comma, do not use additional formatting or tex, do not use parentheses"
+            )
+        )
+        val scoords = pushHistory()
+        val coords = scoords.split(",").map { it.trim().replace("(","").replace(")","").toIntOrNull() }.filterNotNull()
+        if (coords.size.mod(2) == 0) {
+            logger.info { "found ${coords.size/2} coordinates in '$scoords'" }
+            return coords.windowed(2,2, false).map {
+                Vector2(it[0].toDouble(), it[1].toDouble())
+            }
+
+        } else {
+            logger.warn { "invalid coordinates: '$scoords'" }
+            return emptyList()
+        }
 
     }
 
