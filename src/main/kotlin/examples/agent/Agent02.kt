@@ -4,16 +4,12 @@ import lib.OpenRouterAgent
 import lib.map
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.color.rgb
 import org.openrndr.draw.loadFont
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.camera.Camera2D
 import org.openrndr.extra.imageFit.imageFit
 import org.openrndr.extra.shapes.primitives.grid
 import org.openrndr.extra.textwriter.writer
-import org.openrndr.math.Vector2
-import org.openrndr.shape.Rectangle
-import org.openrndr.shape.map
 
 fun main() {
     application {

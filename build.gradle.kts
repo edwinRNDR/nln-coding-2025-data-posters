@@ -106,7 +106,7 @@ plugins {
     java
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.shadow)
-    alias(libs.plugins.runtime)
+//    alias(libs.plugins.runtime)
     alias(libs.plugins.gitarchive.tomarkdown).apply(false)
     alias(libs.plugins.versions)
     alias(libs.plugins.kotlin.serialization)
@@ -120,7 +120,7 @@ repositories {
 dependencies {
 
 //    implementation(libs.jsoup)
-//    implementation(libs.csv)
+    implementation(libs.csv)
 
     /* ORSL dependencies */
 
@@ -177,13 +177,13 @@ kotlin {
 
 // ------------------------------------------------------------------------------------------------------------------ //
 
-project.setProperty("mainClassName", applicationMainClass)
+//project.setProperty("mainClassName", applicationMainClass)
 
-application {
-    if (hasProperty("openrndr.application")) {
-        mainClass = "${property("openrndr.application")}"
-    }
-}
+//application {
+//    if (hasProperty("openrndr.application")) {
+//        mainClass = "${property("openrndr.application")}"
+//    }
+//}
 
 tasks {
     named<ShadowJar>("shadowJar") {
@@ -201,21 +201,21 @@ tasks {
             exclude(dependency("org.bytedeco:.*"))
         }
     }
-    named<org.beryx.runtime.JPackageTask>("jpackage") {
-        doLast {
-            val destPath = if(OperatingSystem.current().isMacOsX)
-                "build/jpackage/openrndr-application.app/Contents/Resources/data"
-            else
-                "build/jpackage/openrndr-application/data"
-
-            copy {
-                from("data") {
-                    include("**/*")
-                }
-                into(destPath)
-            }
-        }
-    }
+//    named<org.beryx.runtime.JPackageTask>("jpackage") {
+//        doLast {
+//            val destPath = if(OperatingSystem.current().isMacOsX)
+//                "build/jpackage/openrndr-application.app/Contents/Resources/data"
+//            else
+//                "build/jpackage/openrndr-application/data"
+//
+//            copy {
+//                from("data") {
+//                    include("**/*")
+//                }
+//                into(destPath)
+//            }
+//        }
+//    }
 }
 
 // ------------------------------------------------------------------------------------------------------------------ //
@@ -230,18 +230,18 @@ tasks.findByName("jpackageZip")?.dependsOn("jpackage")
 
 // ------------------------------------------------------------------------------------------------------------------ //
 
-runtime {
-    jpackage {
-        imageName = "openrndr-application"
-        skipInstaller = true
-        if (OperatingSystem.current().isMacOsX) {
-            jvmArgs.add("-XstartOnFirstThread")
-            jvmArgs.add("-Duser.dir=${"$"}APPDIR/../Resources")
-        }
-    }
-    options = listOf("--strip-debug", "--compress", "1", "--no-header-files", "--no-man-pages")
-    modules = listOf("jdk.unsupported", "java.management", "java.desktop")
-}
+//runtime {
+//    jpackage {
+//        imageName = "openrndr-application"
+//        skipInstaller = true
+//        if (OperatingSystem.current().isMacOsX) {
+//            jvmArgs.add("-XstartOnFirstThread")
+//            jvmArgs.add("-Duser.dir=${"$"}APPDIR/../Resources")
+//        }
+//    }
+//    options = listOf("--strip-debug", "--compress", "1", "--no-header-files", "--no-man-pages")
+//    modules = listOf("jdk.unsupported", "java.management", "java.desktop")
+//}
 
 // ------------------------------------------------------------------------------------------------------------------ //
 

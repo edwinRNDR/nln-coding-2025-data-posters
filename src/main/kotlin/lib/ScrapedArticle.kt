@@ -57,7 +57,8 @@ data class LoadedArticle(
     val images: List<ColorBuffer>,
     val date: String? = null,
     val source: String? = null,
-    val author: String? = null
+    val author: String? = null,
+    val fields: Map<String, String> = emptyMap()
 ) {
     fun destroy() {
         images.forEach { it.destroy() }

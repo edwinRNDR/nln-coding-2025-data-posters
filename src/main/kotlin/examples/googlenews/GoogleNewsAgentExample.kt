@@ -7,7 +7,6 @@ import org.openrndr.application
 import org.openrndr.draw.Session
 import org.openrndr.draw.loadFont
 import org.openrndr.extra.compositor.*
-import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.imageFit.imageFit
 import org.openrndr.extra.textwriter.writer
 import org.openrndr.launch

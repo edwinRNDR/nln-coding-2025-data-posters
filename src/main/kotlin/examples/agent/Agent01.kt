@@ -2,7 +2,6 @@ package examples
 
 import lib.OpenRouterAgent
 import org.openrndr.application
-import org.openrndr.color.rgb
 import org.openrndr.draw.loadFont
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.textwriter.writer
